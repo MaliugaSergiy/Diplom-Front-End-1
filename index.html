@@ -1,17 +1,642 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+<html lang="ru">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="font/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Фикмированная шапка при скролле
+            $("#header").removeClass("default");
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 20) {
+                    $("#header").addClass("default").fadeIn('fast');
+                } else {
+                    $("#header").removeClass("default").fadeIn('fast');
+                };
+            });
 
-    <title>Test by MaliugaSergiy</title>
-  </head>
+            // Плавный скролл по якорям
+            $('a[href^="#"]').click(function () {
+                elementClick = $(this).attr("href");
+                destination = $(elementClick).offset().top;
+                if ($.browser.safari) {
+                    $('body').animate({
+                        scrollTop: destination
+                    }, 1000);
+                } else {
+                    $('html').animate({
+                        scrollTop: destination
+                    }, 1000);
+                }
+                return false;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').append('<div id="toTop">  <i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>  </div>');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
 
-  <body>
-		<h4>ПРИВЕТ!!!!!</h4>
-  </body>
+            $('#toTop').click(function () {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 400);
+            });
+        });
+    </script>
+
+</head>
+<!---->
+<body>
+    <div class="box_header">
+        <div class="box_header-mid">
+            <div class="logo"></div>
+            <div class="header-r">
+                <span class="bars">&nbsp;<i class="fa fa-bars" aria-hidden="true"> </i>
+                </span>
+                <nav>
+                    <a href="#slider-anchor"><span>Головна</span></a>
+                    <a href="#menu-anchor"><span>Доставка</span></a>
+                    <a href="#favourite_anchor"><span>Меню</span></a>
+                    <a href="#anchor_comments"><span>Про нас</span></a>
+                    <a href="#anchor_contact"><span>Контакти</span></a>
+                </nav>
+                <div class="korb"><!--<i class="fa fa-shopping-cart" aria-hidden="true"> </i>-->
+                </div>
+                <form class="wraper_search">
+                    <input type="submit" id="submit_header" value="huu">
+
+                    <label for="submit_header" class="search"><i class="fa fa-search" aria-hidden="true"></i></label>
+                    <input type="search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <input class="background-radio" type="radio" id="back1" name="background-radio">
+    <input class="background-radio" type="radio" id="back2" name="background-radio" checked>
+    <input class="background-radio" type="radio" id="back3" name="background-radio">
+    <div id="slider-anchor" class="box_slider">
+        <div class="box_slider-mid">
+            <div class="box_slider-content box_slider-content1">
+                <h3><span>Дитячі</span> свята</h3>
+                <p>Для батьків день народження дитини – це справжнє випробування. Що подарувати, де святкувати, чим пригостити? Як розважити малечу? Як зберегти дітей і приміщення цілими та неушкодженими?</p>
+                <a href="#" class="button-slider">Замовити</a>
+            </div>
+            <div class="box_slider-content box_slider-content2">
+                <h3><span>корпоративні</span> заходи</h3>
+                <p>Дають унікальну можливість членам великого колективу познайомитися в неформальній обстановці, краще пізнати один одного, проявити особисті якості в нестандартних, а часом і екстремальних умовах.</p>
+                <a href="#" class="button-slider">Замовити</a>
+            </div>
+            <div class="box_slider-content box_slider-content3">
+                <h3><span>Майстер</span>-класи</h3>
+                <p>Кулінарний майстер-клас - це можливість навчитися готувати прості та складні страви ресторанної кухні, обговорити тонкощі приготування та подачі страв, а також скуштувати приготовлені власноруч шедеври.</p>
+                <a href="#" class="button-slider">Замовити</a>
+            </div>
+            <div class="box_slider_box-label">
+                <label class="label_back1" for="back1"></label>
+                <label class="label_back2" for="back2"></label>
+                <label class="label_back3" for="back3"></label>
+            </div>
+        </div>
+    </div>
+    <div class="box_our-services">
+        <div class="zagolovok box_our-services_mid">
+            <h3>Чому саме <span>ми?</span></h3>
+            <p>   Бажаєте на Вашому заході пригощати учасників дійсно якісними кавовими напоями? Бажаєте навчиться створювати шарнімалюни на кавовій піні? Ви жайворонок і для Вас проблемно знайти місце де поснідати в шість годин ранку?</p>
+            <div class="our-services_wrap-bloks ">
+                <a href="#">
+                    <div class="our-services_block ">
+                        <div class="our-services_wrap-img our-services_wrap-kava"></div>
+                        <h4>Кавовий кейтерінг</h4>
+                        <p>Виїздні послуги бариста до вашого офісу  (обслуговування корпоративних заходів). </p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="our-services_block">
+                        <div class="our-services_wrap-img our-services_wrap-napoi"></div>
+                        <h4>малювання на каві</h4>
+                        <p>Наш бариста навчить кожного бажаючого робити забавні малюнки на кавовій пінці.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="our-services_block">
+                        <div class="our-services_wrap-img our-services_wrap-snidanki"></div>
+                        <h4>сніданки з 6:00</h4>
+                        <p>Для ранніх пташок пропонуємо запашні снідаки почитаючи з шостої ранку.</p>
+                        <span id="menu-anchor"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--   MENU -->
+    <div class="wrap_background">
+        <div class="box_memu">
+            <div class="box_memu-mid">
+                <div class="wrap-box_memu-mid">
+                    <h3>доставка</h3>
+                    <!--        Radios табов            -->
+                    <input type="radio" id="radio_sirniki" name="radio_tab" checked>
+                    <input type="radio" id="radio_coffee" name="radio_tab">
+                    <input type="radio" id="radio_coctails" name="radio_tab">
+                    <!--        Radios скрытых пунктов меню       -->
+                    <input type="radio" id="radio_viewall" name="radio_add-list_menu">
+                    <input type="radio" id="radio_hidden" name="radio_add-list_menu" checked>
+
+                    <div class="wrap-btns-menu">
+                        <label class="label_menu label_sirniki" for="radio_sirniki">Десерти</label>
+                        <label class="label_menu label_coffee" for="radio_coffee">Кава</label>
+                        <label class="label_menu label_coctails" for="radio_coctails">Коктейлі</label>
+                    </div>
+
+                    <!--     МЕНЮ СИРНИКІВ      -->
+                    <ul class="menu_list menu_sirniki">
+
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">1.Цвібак</span> <span class="price">41грн</span> </h4>
+                                <p><span class="drscr_price">класичний бісквіт з сметанковим кремом та ягідною поливкою, 40/40/10 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 3 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">2.Англійський кекс</span> <span class="price">9грн</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    з міксом родзинок та з вишнею у власному соці, 100 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 12 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">3.Ірландський кекс</span> <span class="price">15грн</span> </h4>
+                                <p><span class="drscr_price">з міксом родзинок, горішками та журавлиною, 100 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 1 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">4.Шоколадний вулкан</span> <span class="price">21грн</span> </h4>
+                                <p><span class="drscr_price">пудинг з шоколадною начинкою, 80 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 8 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">5.Захер</span> <span class="price">18грн</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    шоколадний бісквіт з абрикосовим конфітюром, 150 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 11 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">6.Маджоріца</span> <span class="price">32грн</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    пісочне тісто з шоколадним заварним кремом, 100г/40г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 2 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">7.Сирник весняний</span> <span class="price">28грн</span> </h4>
+                                <p><span class="drscr_price">Далеко-далеко за словесными горами в стране, гласных.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 13 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">8.Мадленка ванільна</span> <span class="price">25грн</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    бісквітне тісто з ванільним смаком з журавлиною, 20 г</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 44 </span> </p>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <!--     МЕНЮ КАВИ      -->
+                    <ul class="menu_list menu_coffee">
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">1. Еспресо</span> <span class="price">29грн</span> </h4>
+                                <p><span class="drscr_price">чорна кава,  35 мл</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 0 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">2. Рістрето</span> <span class="price">33грн</span> </h4>
+                                <p><span class="drscr_price">міцна чорна кава, 18 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 6 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">3. Лунго(американо)</span> <span class="price">18грн</span> </h4>
+                                <p><span class="drscr_price">еспресо розбавлене водою, 90 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 8 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">4. Лунго з молоком</span> <span class="price">21грн</span> </h4>
+                                <p><span class="drscr_price">35/55 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 5 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">5. Глясе</span> <span class="price">16грн</span> </h4>
+                                <p><span class="drscr_price">лунго з морозивом, 90/40 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 0 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">6. Романо</span> <span class="price">21грн</span> </h4>
+                                <p><span class="drscr_price">чорна кава з цитриною, 90 мл. </span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 0 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">7. Маккіато</span> <span class="price">33грн</span> </h4>
+                                <p><span class="drscr_price">класичне еспресо з молочною піною, 35/55 </span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 10 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">8. Допіо</span> <span class="price">40грн</span> </h4>
+                                <p><span class="drscr_price">подвійне еспресо, 70 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 13 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">9. Лате</span> <span class="price">18грн</span> </h4>
+                                <p><span class="drscr_price">класичне еспресо з великою кількістю молока, 35/215 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 13 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">10. Капуччіно</span> <span class="price">21гн</span> </h4>
+                                <p><span class="drscr_price">класичне експресо із збитим молоком, 35/130 мл.</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 13 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">11. Фраппе</span> <span class="price">25грн</span> </h4>
+                                <p><span class="drscr_price">еспрессо з льодом і збитим молоком, 300 мл</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 13 </span> </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!--     МЕНЮ КОКТЕЙТЕЙ      -->
+                    <ul class="menu_list menu_coctails">
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">1.Пінья колада</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    Білий ром, Малібу, ананасовий сік</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 55 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">2.Сонячний поцілунок</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">Куантро, ананасовий сік, виноградний сік </span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 60 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">3.Мохіто безалкогольний</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">Лід, содова, м'ята</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 1 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">4.Морський бриз</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    Горілка, грейпфрутовий сік, сік з журавлини</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 6 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">5.Маргарита</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">Текіла, Куантро, лайм</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 60 </span> </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4><span class="name-price">6.Дайкірі</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">Білий ром, цукрова пудра, лайм</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 15 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">7.Айріш кофі</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    Американо, Джемесон, вершки</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 11 </span> </p>
+                            </a>
+                        </li>
+                        <li class="hidden_li">
+                            <a href="#">
+                                <h4><span class="name-price">8.Куба лібре</span> <span class="price">$5.5</span> </h4>
+                                <p><span class="drscr_price">
+
+                                    Білий ром, кока-кола, лайм</span> <span class="like"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp; 32 </span> </p>
+                            </a>
+                        </li>
+                    </ul>
+                    <label class="label_view view_all" for="radio_viewall"><span> Показати все &nbsp; </span> <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                    </label>
+                    <label class="label_view view_hidden" for="radio_hidden"><span> згорнути &nbsp; </span> <i class="fa fa-chevron-right fa-rotate-270" aria-hidden="true"></i> </label>
+                </div>
+                <div class="side_img"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box_our-special-things">
+        <div class="box_our-special-things_mid">
+            <h3>Особливі <span> пропозиції серпня</span></h3>
+            <p> Тільки в листопаді цього року ви маєте можливість скуштувати ці неперевершені смаколики наших кондитерів</p>
+            <div class="wrap_special-thing">
+                <div class="wrap_special-thing">
+                    <div class="sp_th1 special-thing">
+                        <div class="special-thing_contant sstt">
+                            <h4>Сирник морзко</h4>
+                            <p>У серпні у нас багато свят. Ми святкуємо їх за сімейним столом і природно, в кінці застілля завжди замовляти торт. Але така спека, не хочеться тортів з кремом. І ми пропонуємо на десерт сирник "Морозко". Цього місяця вашій увазі представляємо торт-морозиво з двома видами морозива.</p>
+                        </div>
+                    </div>
+                    <div class="sp_th2 special-thing">
+                        <div class="special-thing_contant sstt">
+                            <h4>Шоколадне гніздо</h4>
+                            <p>Цей торт не випадково має таку назву, так як за смаком насправді нагадує морозиво «Крем-брюле», завдяки заварному крему. Готується просто і виходить дуже смачним. Шоколадний торт з заварним кремом «Крем-брюле» можна приготувати до приходу гостей, і до сімейного чаювання. </p>
+                        </div>
+                    </div>
+                    <div class="sp_th3 special-thing">
+                        <div class="special-thing_contant sstt">
+                            <h4>Полунична забава</h4>
+                            <p>Шалено смачний тришаровий бісквітний торт з начинкою зі свіжої полуниці та вершків. Витончено виглядає, але будьте обережні, тому що здатний викликати звикання, можливо це буде єдиний торт, який ви захочете їсти знову і знову!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box_break">
+        <div class="box_break_left">
+            <div class="box_break_mid">
+                <input type="radio" id="radio_break_knowmore" name="radio_break" class="radio_break">
+                <input type="radio" id="radio_break_hidden" name="radio_break" class="radio_break" >
+                <h3>наші <span>цінності</span></h3>
+                <p> Пригадайте себе у дитинстві. Кожен з нас хотів якомога швидше вирости і стати дорослим: сильним, впевненим у собі та успішним. Кожен з нас у своїх мріях жив у майбутньому, а значить – створював прийдешнє, перетворював «завтра» на «сьогодні». Тепер маленькі мрійники і чомусики живуть поряд з нами – вони наші діти. Саме вони зараз мають цю почесну місію – «творити прийдешнє і згодом жити у майбутньому». І в цьому майбутньому буде багато нового і кращого. </p>
+                <p class="break_hidden-text"> Наші діти матимуть добрі родинні традиції, які започаткували саме ми – їхні батьки. Адже усе, що ми залишаємо по собі, постає перед нашими нащадками. Наші здобутки, наші досягнення, наші родинні цінності та традиції стають надбанням наших дітей.     </p>
+                <label for="radio_break_knowmore" class="break_knowmore">Докладніше</label>
+                <label for="radio_break_hidden" class="break_hidden">Згорнути</label>
+            </div>
+        </div>
+        <div id="favourite_anchor"></div>
+    </div>
+    <div class="box_our-favourite">
+        <div class="our-favourite-mid">
+           <h3>Стіл <span>замовленнь</span></h3>
+           <input type="radio" id="radio_fv1" name="radio_fv" checked>
+           <input type="radio" id="radio_fv2" name="radio_fv">
+           <input type="radio" id="radio_fv3" name="radio_fv">
+           <input type="radio" id="radio_fv4" name="radio_fv">
+            <div class="wrap_label_favourite">
+                <label for="radio_fv1">Кава класична</label>
+                <label for="radio_fv2">Кавові коктейлі</label>
+                <label for="radio_fv3">Кава з молоком</label>
+                <label for="radio_fv4">Дитячі напої</label>
+            </div>
+            <input type="radio" name="radio_fv_hidden" id="radio_viewall_fv">
+            <input type="radio" name="radio_fv_hidden" id="radio_hidden_fv" checked>
+
+            <div class="wrap_for_fv wrap_for_fv1">
+                <div class="wrap_fv">
+                    <div class="fv fv1">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">21 грн</div>
+                        <div class="fv_name">Еспресо</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">хіт</div>
+                    </div>
+                    <div class="fv fv2">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">22 грн</div>
+                        <div class="fv_name">Рістрето</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv3">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">18 грн</div>
+                        <div class="fv_name">Романо</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv4">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">24 грн</div>
+                        <div class="fv_name">Лате</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+
+                    </div>
+                    <div class="fv fv5">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">19 грн</div>
+                        <div class="fv_name">Капуччіно</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">хіт</div>
+                    </div>
+                    <div class="fv fv6">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">22 грн</div>
+                        <div class="fv_name">Допіо</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv7 hidden_fvs_1">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">34 грн</div>
+                        <div class="fv_name">Какао</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv8 hidden_fvs_1">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">41 грн</div>
+                        <div class="znizka">-10грн</div>
+                        <div class="fv_name">Кава у Френчпресі</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">Знижка</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap_for_fv wrap_for_fv2">
+                <div class="wrap_fv">
+                    <div class="fv fv1">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">27 грн</div>
+                        <div class="fv_name">Джемс Мороз</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv2">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">23 грн</div>
+                        <div class="fv_name">Поцілунок</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">хіт</div>
+                    </div>
+                    <div class="fv fv3">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">15 грн</div>
+                        <div class="fv_name">Кокосове яблуко</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv4">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">25 грн</div>
+                        <div class="fv_name">Мідорі-Сауер</div>
+                        <div class="znizka">-15грн</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">Знижка</div>
+                    </div>
+                    <div class="fv fv5">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">28 грн</div>
+                        <div class="fv_name">Морський бриз</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">хіт</div>
+                    </div>
+                    <div class="fv fv6">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">31 грн</div>
+                        <div class="fv_name">Дайкірі</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                    </div>
+                    <div class="fv fv7 hidden_fvs_1">
+                        <div class="fv_img"></div>
+                        <div class="fv_price">33 грн</div>
+                        <div class="fv_name">Айріш кофі</div>
+                        <div class="znizka">-5грн</div>
+                        <div class="fv_addtocard">Додати</div>
+                        <div class="fv_order">Замовити</div>
+                        <div class="red_label">Знижка</div>
+                    </div>
+
+                </div>
+            </div>
+            <label class="label_view view_all_fv" for="radio_viewall_fv" ><span> Показати все &nbsp; </span> <i class="fa fa-chevron-right" aria-hidden="true"></i></label>
+            <label class="label_view hidden_all_fv" for="radio_hidden_fv" ><span> Згорнути &nbsp; </span> <i class="fa fa-chevron-up" aria-hidden="true"></i></label>
+
+        </div>
+        <div id="anchor_comments"></div>
+    </div>
+    <div class="box_comments">
+        <div class="box_comments_mid">
+            <input type="radio" name="comment_radio" id="comment_radio1" checked>
+            <input type="radio" name="comment_radio" id="comment_radio2">
+            <input type="radio" name="comment_radio" id="comment_radio3">
+                       <h3>Наші <span>вдячні відвідувачі</span></h3>
+
+            <div class="customer customer1">
+                <p>  Вчора були у Вас, інтер'єр спокійний , затишний, ненав'язлива музика, страви смачнющі, адміністратор дуже приємна і привітна дівчина. Я думаю, що у Києві немає місць рівних цьому, завітайте, не пожалієте, ми з чоловіком залишились довольні!!! Дякуємо!!!  </p>
+                <div class="photo_customer"></div>
+                <div class="name_customer">Надія Бойко</div>
+                <div class="info_customer">Студентка, Кривий Ріг, 22 роки</div>
+            </div>
+            <div class="customer customer2">
+                <p>  дуже престижний ресторан нашого міста.дуже смачно і дуже багато. Дюкую персоналу. Приємна і затишна атмосфера, люб'язний і завжди усміхнений персонал та неймовірно смачна кухня. Дякую  </p>
+                <div class="photo_customer"></div>
+                <div class="name_customer">Олександра Сіра</div>
+                <div class="info_customer">Акторка, Луцьк, 28 років</div>
+            </div>
+            <div class="customer customer3">
+                <p>  Чудовий ресторан! Все дуже вишукано, проте ненав'язливо. Приємна і затишна атмосфера, люб'язний і завжди усміхнений персонал та неймовірно смачна кухня. Завжди прекрасний настрій,який залишається після відвудування цього закладу, змушує повертатись туди знову. </p>
+                <div class="photo_customer"></div>
+                <div class="name_customer">Надія Бойко</div>
+                <div class="info_customer">Домогосподарка, Кременчуг, 28 років</div>
+            </div>
+            <div class="wrap_comments_labels">
+                <label for="comment_radio1" class="label_customer"></label>
+                <label for="comment_radio2" class="label_customer"></label>
+                <label for="comment_radio3" class="label_customer"></label>
+            </div>
+        </div>
+        <div id="anchor_contact"></div>
+    </div>
+    <div class="box_contact">
+        <div class="contact_mid">
+            <h3>Контакти</h3>
+            <div class="contact_dates">
+                <address> м.Київ, вул. Січнегвого повстання, б.34 </address>
+                <a class="contact_tel" href="tel:0444111896">+38 044 4111869 </a>
+                <a class="contact_mail" href="mailto:mail@me.ua">mail@me.ua</a>
+                <a class="contact_web" href="#">Kaffeinate-caffee.com</a>
+            </div>
+            <form action="GET" class="form_contact">
+                <input type="text" placeholder="Iм'я *">
+                <input type="email" placeholder="Cкринька *">
+                <input list="contact_datalist" class="input_datalist" placeholder="Кооперації">
+                <datalist id="contact_datalist" >
+                    <option value="Sony"> </option>
+                    <option value="Panasonic"> </option>
+                    <option value="LG"> </option>
+                </datalist>
+                <textarea name="message" id="textarea" cols="5" rows="15" placeholder="Повідомлення *"></textarea>
+                <input type="submit" value="Відправити">
+            </form>
+        </div>
+    </div>
+    <div class="first_footer">
+        <div class="footer1_wrap">
+            <div class="first_footer_mid">
+                <div class="footer_logo"></div>
+                <p>Якщо Ви хочете своэчасно отримувати актуальну інформацію з приводу запланованих заходів, новинок в нашому меню, а також щодо проведення акцій та отримувати знижки - підпишіться на нару розсилку. Кожен сотий підписник отримає сертифікат на суму 150 грн на весь осортимент окрім алкогольної продукції. </p>
+                <div class="box_subscribe">
+                    <form action="get">
+                        <div class="cover_subcsribe">
+                            <label for="subscribe_email" class="label_subscribe"> subscribe</label>
+                            <input type="email" id="subscribe_email" placeholder="Ваша скринька">
+                        </div>
+                        <input type="submit" id="subscribe_submit">
+                        <label for="subscribe_submit" class="label_submit"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer2">
+        <div class="footer2_mid">
+            <p class="copyrught">  &copy;Designed By Anh Le 2016 </p>
+            <div class="footer_soc-net_icons">
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="podskazka">twitter</span> </a>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="podskazka">facebook</span> </a>
+                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i><span class="podskazka">pinterest</span>  </a>
+                <a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i><span class="podskazka">tumblr</span> </a>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
